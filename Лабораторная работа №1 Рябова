@@ -1,0 +1,200 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows;
+
+namespace Biquadrat
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Рябова Вероника Владимировна ИУ5-35Б");
+            Console.ResetColor();
+            double a, b, c;
+            bool result = double.TryParse(args[0], out a);
+            if (result !=true)
+            {
+                a = System.Convert.ToDouble(Console.ReadLine());
+            }
+            //double a = System.Convert.ToDouble(args[0]);
+            //double b = System.Convert.ToDouble(args[1]);
+            //double c = System.Convert.ToDouble(args[2]);
+            bool result1 = double.TryParse(args[1], out b);
+            if (result1 != true)
+            {
+                b = System.Convert.ToDouble(Console.ReadLine());
+            }
+            bool result2 = double.TryParse(args[2], out c);
+            if (result2 != true)
+            {
+                c = System.Convert.ToDouble(Console.ReadLine());
+            }
+            double x1, x2, x3, x4, d, t1, t2;
+            if (a != 0 && b != 0 && c != 0)
+            {
+                d = b * b - 4 * a * c;
+                if (d > 0)
+                {
+                    t1 = (-b + Math.Sqrt(d)) / (2 * a);
+                    t2 = (-b - Math.Sqrt(d)) / (2 * a);
+                    if (t1 >= 0)
+                    {
+                        x1 = Math.Sqrt(t1);
+                        x2 = -Math.Sqrt(t1);
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.Write("x1 = {0}, x2 = {1} ", x1, x2);
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write("Нет корней x1, x2 ");
+                        Console.ResetColor();
+                    }
+                    if (t2 >= 0)
+                    {
+                        x3 = Math.Sqrt(t2);
+                        x4 = -Math.Sqrt(t2);
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("x3 = {0}, x4 = {1} ", x3, x4);
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Нет корней x3, x4 ");
+                        Console.ResetColor();                        
+                    }
+                }
+                else if (d == 0)
+                {
+                    t1 = -b / (2 * a);
+                    if (t1 >= 0)
+                    {
+                        x1 = Math.Sqrt(t1);
+                        x2 = -Math.Sqrt(t1);
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.Write("x1 = {0}, x2 = {1} ", x1, x2);
+                        Console.ResetColor();
+                    }
+                    else if (t1 == 0)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Нет корней");
+                        Console.ResetColor();
+                    }
+                       
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Нет корней");
+                    Console.ResetColor();
+                }
+            }
+            else if (a==0)
+            {
+                if (c < 0)
+                {
+                    x1 = Math.Sqrt(-c / b);
+                    x2 = -Math.Sqrt(-c / b);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("x1 = {0}, x2 = {1} ", x1, x2);
+                    Console.ResetColor();
+                }
+                else if (c==0)
+                {
+                    x1 = 0;
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("x1 = {0} ", x1);
+                    Console.ResetColor();
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Нет корней");
+                    Console.ResetColor();
+                }
+            }
+            else if(b==0)
+            {
+                if (c<0)
+                {
+                    t1 = Math.Sqrt(-c / a);
+                    t2 = -Math.Sqrt(-c / a);
+                    if (t1>0)
+                    {
+                        x1 = Math.Sqrt(t1);
+                        x2 = -Math.Sqrt(t1);
+                        Console.BackgroundColor = ConsoleColor.Green;
+                        Console.WriteLine("x1 = {0}, x2 = {1} ", x1, x2);
+                        Console.ResetColor();
+                    }
+                    else if (t2 > 0)
+                    {
+                        x1 = Math.Sqrt(t2);
+                        x2 = -Math.Sqrt(t2);
+                        Console.BackgroundColor = ConsoleColor.Green;
+                        Console.WriteLine("x1 = {0}, x2 = {1} ", x1, x2);
+                        Console.ResetColor();
+                    }
+                }
+                else if(c==0)
+                {
+                    x1 = 0;
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("x1 = {0} ", x1);
+                    Console.ResetColor();
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Нет корней");
+                    Console.ResetColor();
+                }
+            }
+            else if (c==0)
+            {
+                if(a!=0 && b!=0)
+                {
+                    t1 = 0;
+                    x1 = Math.Sqrt(t1);
+                    x2 = -Math.Sqrt(t1);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write("x1 = {0}, x2 = {1} ", x1, x2);
+                    if(b<0)
+                    {
+                        x3 = Math.Sqrt(-b / a);
+                        x4 = - Math.Sqrt(-b / a);
+                        Console.WriteLine("x3 = {0}, x4 = {1} ", x3, x4);
+                    }
+                    else if (b==0)
+                    {
+                        x3 = 0;
+                        Console.WriteLine("x3 = {0} ", x3);
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Нет корней х3 и х4 ");
+                        Console.ResetColor();
+                    }
+
+                }
+            }
+            else if (a==0 && b==0)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Нет корней ");
+                Console.ResetColor();
+            }
+        }
+    }
+}
